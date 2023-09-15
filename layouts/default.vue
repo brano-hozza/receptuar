@@ -2,7 +2,7 @@
   <div>
     <!--App header-->
     <header class="header">
-      <h1 class="text-lg">My App</h1>
+      <h1 class="text-lg">Receptuar</h1>
       <ul class="nav">
         <li
           v-for="option in pathOptions"
