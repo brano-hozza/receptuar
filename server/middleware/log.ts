@@ -1,10 +1,10 @@
-import { createConsola } from "consola";
+import { createConsola } from 'consola'
 
 const consola = createConsola({
   defaults: {
-    tag: "SERVER:",
+    tag: 'SERVER:',
   },
-});
+})
 export default defineEventHandler((event) => {
-  consola.log(getRequestURL(event)?.pathname);
-});
+  consola.log(getRequestURL(event)?.pathname)
+})

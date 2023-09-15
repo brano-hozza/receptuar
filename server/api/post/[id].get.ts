@@ -1,13 +1,14 @@
-import posts from "../../data/posts.json";
+import { Post } from '@/types/post'
+import { post } from '~/server/models'
 
-export default defineEventHandler((event) => {
-  const id = getRouterParam(event, "id");
+export default defineEventHandler(async (event) => {
+  const id = getRouterParam(event, 'id')
 
-  const post = posts.find((post) => post.id === Number(id));
+  const _post = await post.findById(id)
 
-  if (!post) {
-    return createError({ statusCode: 404 });
+  if (!_post) {
+    throw createError({ statusCode: 404 })
   }
 
-  return { data: post };
-});
+  return { id: _post._id.toString(), name: _post.name } as Post
+})

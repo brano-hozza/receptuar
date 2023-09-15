@@ -1,15 +1,15 @@
-import posts from "../../data/posts.json";
+import { post } from '~/server/models'
+import { Post } from '~/types/post'
+
 export default defineEventHandler(async (event) => {
-  const body = await readBody(event);
-  const name = body.name;
+  const body = await readBody(event)
+  const name = body.name
 
   if (!name) {
-    return createError({ statusCode: 400, statusMessage: "Name is required" });
+    throw createError({ statusCode: 400, statusMessage: 'Name is required' })
   }
 
-  const highestId = Math.max(...posts.map((post) => post.id));
-  const newPost = { id: highestId + 1, name };
-  posts.push(newPost);
+  const newPost = await post.create({ name })
 
-  return { data: newPost };
-});
+  return { id: newPost._id.toString(), name: newPost.name } as Post
+})

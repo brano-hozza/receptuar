@@ -1,6 +1,6 @@
 export default defineEventHandler((event) => {
   event.context.auth = {
-    username: "admin",
-    password: "admin",
-  };
-});
+    username: 'admin',
+    password: 'admin',
+  }
+})
