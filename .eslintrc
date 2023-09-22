@@ -13,5 +13,7 @@
     "parser": "@typescript-eslint/parser"
   },
   "plugins": [],
-  "rules": {}
+  "rules": {
+    "import/no-named-as-default-member": "off"
+  }
 }
